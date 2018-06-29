@@ -1,0 +1,8 @@
+prefix=/home/hl/catkin_ws/src/cmake-build-debug/devel
+
+Name: gps_localization_lib
+Description: Description of gps_localization_lib
+Version: 0.0.1
+Cflags: -I/home/hl/catkin_ws/src/localization/gps_localization/gps_localization_lib/include/
+Libs: -L/home/hl/catkin_ws/src/cmake-build-debug/devel/lib -lgps_localization_lib
+Requires: gl8_utils gl8_vis cv_bridge

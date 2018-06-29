@@ -1,0 +1,19 @@
+<package format="2">
+  <name>gps_localization_lib</name>
+  <version>0.0.1</version>
+  <description>
+    gps localization fucntions for gl8 system
+  </description>
+  <author>wenglihong</author>
+  <maintainer email="wengge987@163.com">wenglihong</maintainer>
+  <license>BSD</license>
+  <url></url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <depend>cv_bridge</depend>
+  <depend>gl8_utils</depend>
+  <depend>gl8_vis</depend>
+</package>

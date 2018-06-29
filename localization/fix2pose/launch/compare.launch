@@ -1,0 +1,78 @@
+<!-- -->
+<launch>
+  <node name="decoder" pkg="ican" type="decoder"/>
+  	<node pkg="fix2pose" type="n280conv" name="n280conv"/>
+  	<node pkg="fix2pose" type="fix2tfpose" name="truth_pose" output="screen">
+		<param name="topic_pose" value="truth_pose"/>
+		<param name="topic_gps" value="gps_filtered"/>
+		<param name="frame_id" value="base_link"/>
+		<param name="topic_yaw" value="yaw_filtered"/>
+		<param name="origin_lat" value="31.027"/>
+		<param name="origin_lon" value="121.433"/>
+
+<!--		latitude: 31.0274549517-->
+<!--longitude: 121.433393138-->
+
+    </node>
+
+  	<node pkg="fix2pose" type="pose2path" name="truth_path" output="screen">
+<!--		<param name="pose_type" value="truth_pose"/>-->
+<!--		<param name="path_type" value="truth_path"/>-->
+    </node>
+  	<node pkg="fix2pose" type="fix2tfpose" name="rtk_pose">
+		<param name="topic_pose" value="rtk_pose"/>
+		<param name="topic_gps" value="rtk/fix"/>
+		<param name="frame_id" value="rtk"/>
+		<param name="topic_yaw" value="imu_yaw"/>
+		<param name="origin_lat" value="31.027"/>
+		<param name="origin_lon" value="121.433"/>
+
+<!--		latitude: 31.0274549517-->
+<!--longitude: 121.433393138-->
+
+    </node>
+
+  	<node pkg="fix2pose" type="pose2path" name="rtk_path">
+		<remap from="truth_path" to="rtk_path"/>
+		<remap from="truth_pose" to="rtk_pose"/>
+
+    </node>
+
+  	<node pkg="fix2pose" type="fix2tfpose" name="estimate_pose" output="screen">
+		<param name="topic_pose" value="estimate_pose"/>
+		<param name="topic_gps" value="n280_fix"/>
+		<param name="frame_id" value="estimate"/>
+		<param name="topic_yaw" value="n280_yaw"/>
+		<param name="origin_lat" value="31.027"/>
+		<param name="origin_lon" value="121.433"/>
+
+
+    </node>
+  	<node pkg="fix2pose" type="pose2path" name="estimate_path" output="screen">
+<!--		<param name="path_type" value="estimate_path"/>-->
+<!--		<param name="pose_type" value="estimate_pose"/>-->
+		<remap from="truth_path" to="estimate_path"/>
+		<remap from="truth_pose" to="estimate_pose"/>
+
+    </node>
+    <node pkg="pose_fusion" type="filter" name="filter" output="screen">
+      <!-- topic name setup -->
+      <param name="gps_input_topic" type="string" value="/rtk/fix"/>
+      <param name="imu_input_topic" type="string" value="/imu_torso/xsens/data"/>
+      <param name="encoder_input_topic" type="string" value="pulse"/>
+      <param name="gps_output_topic" type="string" value="/gps_filtered"/>
+      <param name="yaw_output_topic" type="string" value="/yaw_filtered"/>
+      <param name="encoder_input_frequency" type="double" value="150"/>
+      <param name="gps_input_frequency" type="double" value="10"/>
+      <param name="imu_input_frequency" type="double" value="100"/>
+      <!-- the frequency of gps and yaw output -->
+      <param name="output_frequency" type="double" value="10"/>
+      <!-- sensor error setup -->
+      <param name="GPS_error" type="double" value="0.04"/>
+      <param name="imu_angular_velocity_error" type="double" value="0.0005"/>
+      <!-- flat plane, encoder error 0.003 -->
+      <param name="encoder_error" type="double" value="0.03"/>
+      <param name="imu_orientation_yaw_error" type="double" value="0.122"/>
+      <param name="GPS_yaw_estimation_error" type="double" value="0.05"/>
+    </node>
+</launch>

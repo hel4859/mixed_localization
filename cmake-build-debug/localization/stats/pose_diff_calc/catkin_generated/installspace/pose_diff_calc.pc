@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: pose_diff_calc
+Description: Description of pose_diff_calc
+Version: 0.0.1
+Cflags: -I/usr/local/include
+Libs: -L/usr/local/lib -lsensor -lglobal_parameter -lmap_frame -lposition_diff -langle_diff
+Requires: cmake_modules nav_msgs roscpp rospy sensor_msgs std_msgs gl8_msgs tf

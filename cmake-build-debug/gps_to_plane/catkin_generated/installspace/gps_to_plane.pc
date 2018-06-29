@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: gps_to_plane
+Description: Description of gps_to_plane
+Version: 0.0.0
+Cflags: 
+Libs: -L/usr/local/lib 
+Requires: 

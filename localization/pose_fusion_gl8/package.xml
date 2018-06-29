@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>pose_fusion</name>
+  <version>0.0.2</version>
+  <description>
+    In this package, we combine the latitude/longitude/yaw information
+    from GPS with IMU and rear wheel encoder.
+      1.ekf_pose.h/cpp are used to support ekf algorithm.
+      2.map_frame.h is used to transform latitude/longitude information
+         into 2D coordinate system.
+      3.global_parameter.h/cpp contains global parameters.
+      4.sensor.h, sensor_input_and_output.h/cpp shows the process of sensor input,
+         preprocess, fusion and sensor output. The preprocess is in the
+         class of sensor input, while the fusion section is in the class
+         of sensor output.
+    Welcome to use the pose_fusion module.
+
+    The usage: 
+        open the folder "./launch" to check that all parameters are correct.
+        Then type "roslaunch pose_fusion filter_xxx.launch" in the terminal.
+        (make sure roscore is open)
+
+    The improvement in version 0.0.1:
+        1.The yaw from gps is calculated by two points at a distance of 3~4 sigma,
+          the improvement will reduce large estimated error caused from gps error.
+        2.The 2D transformation has an adaptive centre point. 
+
+    The improvement in version 0.0.2:
+        1.Initialize using IMU orientation 
+        2.Partially restart
+    For more information, feel free to contact the maintainer or author.
+  </description>
+  <maintainer email="lty@sjtu.org">lty</maintainer>
+  <license>Cyberc3 (SJTU)</license>
+  <!-- <url type="website">http://wiki.ros.org/ltypositioning</url> -->
+  <author email="lty@sjtu.org">lty</author>
+
+  <!-- The *_depend tags are used to specify dependencies -->
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>cmake_modules</depend>
+  <depend>eigen</depend>
+  <depend>tf</depend>
+  <depend>nav_msgs</depend>
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>gl8_msgs</depend>
+  <exec_depend>message_runtime</exec_depend>
+  find_package(Eigen3)
+  if(NOT EIGEN3_FOUND)
+    find_package(cmake_modules REQUIRED)
+    find_package(Eigen REQUIRED)
+    set(EIGEN3_INCLUDE_DIRS ${EIGEN_INCLUDE_DIRS})
+    set(EIGEN3_LIBRARIES ${EIGEN_LIBRARIES})
+  endif()
+
+  add_definitions(-DEIGEN_NO_DEBUG -DEIGEN_MPL2_ONLY)
+
+  roslint_cpp()
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

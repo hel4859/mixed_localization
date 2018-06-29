@@ -1,0 +1,11 @@
+<!-- -->
+<launch>
+    <node pkg="fix2pose" type="pose2path" name="rtk_path" ns="lty" output="screen">
+        <param name="pose_name" type="string" value="/rtk"/>
+        <param name="path_name" type="string" value="/rtk_path"/>
+        <param name="id" type="int" value="100"/>
+        <param name="color_r" type="double" value="1"/>
+        <param name="color_g" type="double" value="1"/>
+        <param name="color_b" type="double" value="0.8"/>
+    </node>
+</launch>

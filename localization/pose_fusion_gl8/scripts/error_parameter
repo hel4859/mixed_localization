@@ -1,0 +1,4 @@
+heading_truth = heading - 0.55/180.0*np.pi
+speed_truth = 0.99395046 * rear_wheel_speed + 0.005075969
+yaw_rate_truth = 1.00633477 * imu_yaw_z - 0.001043683
+ 

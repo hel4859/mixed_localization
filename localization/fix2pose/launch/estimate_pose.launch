@@ -1,0 +1,12 @@
+<!-- -->
+<launch>
+  	<node pkg="fix2pose" type="fix2tfpose" name="estimate_pose" output="screen">
+                <param name="topic_pose" type="string" value="/estimation"/>
+                <param name="topic_gps" type="string" value="/lty_GPS"/>
+                <param name="frame_id" type="string" value="/estimation"/>
+                <param name="topic_yaw" type="string" value="/lty_yaw"/>
+                <param name="origin_lat" type="double" value="31.027"/>
+                <param name="origin_lon" type="double" value="121.433"/>
+    </node>
+
+</launch>

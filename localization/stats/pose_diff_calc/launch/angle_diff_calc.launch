@@ -1,0 +1,12 @@
+<!-- Starts angle_diff_calc node with param -->
+<launch>
+    <node pkg="pose_diff_calc" type="angle_diff_calc" name="angle_diff_calc" output="screen">
+      <!-- topic name setup -->
+      <param name="angle_topic_1" type="string" value="/n280/GPS_N280/orientation"/>
+      <param name="angle_topic_2" type="string" value="/yaw_filtered"/>
+      <param name="angle_diff_topic" type="string" value="/yaw_diff"/>
+      <param name="angle_frequency_1" type="double" value="20"/>
+      <param name="angle_frequency_2" type="double" value="10"/>
+      <param name="angle_diff_output_frequency" type="double" value="10"/>
+    </node>
+</launch>

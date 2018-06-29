@@ -1,0 +1,8 @@
+prefix=/home/hl/catkin_ws/src/cmake-build-debug/devel
+
+Name: gps_to_plane
+Description: Description of gps_to_plane
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/hl/catkin_ws/src/cmake-build-debug/devel/lib 
+Requires: 

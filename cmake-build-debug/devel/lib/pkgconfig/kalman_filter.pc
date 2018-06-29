@@ -1,0 +1,8 @@
+prefix=/home/hl/catkin_ws/src/cmake-build-debug/devel
+
+Name: kalman_filter
+Description: Description of kalman_filter
+Version: 0.0.1
+Cflags: -I/home/hl/catkin_ws/src/localization/lib/kalman_filter/include/
+Libs: -L/home/hl/catkin_ws/src/cmake-build-debug/devel/lib -lkalman_filter
+Requires: 

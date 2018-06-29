@@ -1,0 +1,11 @@
+<!--Start estimate_path with params -->
+<launch>
+    <node pkg="fix2pose" type="pose2path" name="estimate_path" output="screen">
+        <param name="pose_name" type="string" value="/estimation"/>
+        <param name="path_name" type="string" value="/estimation_path"/>
+        <param name="id" type="int" value="101"/>
+        <param name="color_r" type="double" value="1.0"/>
+        <param name="color_g" type="double" value="0.0"/>
+        <param name="color_b" type="double" value="0.0"/>
+    </node>
+</launch>

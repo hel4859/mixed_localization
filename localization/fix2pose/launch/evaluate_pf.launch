@@ -1,0 +1,13 @@
+<!-- -->
+<launch>  
+    <node pkg="fix2pose" type="pose2path2" name="gt_path">
+      		<remap from="truth_path" to="gt_path"/>
+    		<remap from="truth_pose" to="gt_pose"/>
+    </node>
+    
+    <node pkg="fix2pose" type="pose2path2" name="pf_path">
+      		<remap from="truth_path" to="pf_path"/>
+    		<remap from="truth_pose" to="pf_pose"/>
+    </node>
+    
+</launch>

@@ -1,0 +1,8 @@
+prefix=/home/hl/catkin_ws/src/cmake-build-debug/devel
+
+Name: particle_filter
+Description: Description of particle_filter
+Version: 0.0.1
+Cflags: -I/home/hl/catkin_ws/src/localization/lib/particle_filter/include/
+Libs: -L/home/hl/catkin_ws/src/cmake-build-debug/devel/lib -lparticle_filter
+Requires: 

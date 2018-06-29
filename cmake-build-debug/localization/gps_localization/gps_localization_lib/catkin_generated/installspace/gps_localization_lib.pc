@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: gps_localization_lib
+Description: Description of gps_localization_lib
+Version: 0.0.1
+Cflags: -I/usr/local/include
+Libs: -L/usr/local/lib -lgps_localization_lib
+Requires: gl8_utils gl8_vis cv_bridge

@@ -1,0 +1,8 @@
+prefix=/home/hl/catkin_ws/src/cmake-build-debug/devel
+
+Name: pose_diff_calc
+Description: Description of pose_diff_calc
+Version: 0.0.1
+Cflags: -I/home/hl/catkin_ws/src/localization/stats/pose_diff_calc/include
+Libs: -L/home/hl/catkin_ws/src/cmake-build-debug/devel/lib -lsensor -lglobal_parameter -lmap_frame -lposition_diff -langle_diff
+Requires: cmake_modules nav_msgs roscpp rospy sensor_msgs std_msgs gl8_msgs tf

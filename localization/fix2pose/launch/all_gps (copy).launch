@@ -1,0 +1,47 @@
+<!-- -->
+<launch>
+    <node pkg="fix2pose" type="fix2tfpose" name="sn_pose" output="screen">
+        <param name="topic_pose" value="/sn"/>
+		<param name="topic_gps" value="/sn/fix"/>
+        <param name="frame_id" value="/sn"/>
+		<param name="topic_yaw" value="/sn/heading"/>
+		<param name="origin_lat" value="31.027"/>
+		<param name="origin_lon" value="121.433"/>
+
+<!--		latitude: 31.0274549517-->
+<!--        longitude: 121.433393138-->
+
+    </node>
+    <node pkg="fix2pose" type="pose2path" name="sn_path" ns="lty" output="screen">
+        <param name="pose_name" type="string" value="/sn"/>
+        <param name="path_name" type="string" value="/sn_path"/>
+        <param name="point_marker_type" type="int" value="6"/>
+        <param name="id" type="int" value="100"/>
+        <param name="color_r" type="double" value="1"/>
+        <param name="color_g" type="double" value="0"/>
+        <param name="color_b" type="double" value="0"/>
+    </node>
+
+    <node pkg="fix2pose" type="fix2tfpose" name="filter_pose" output="screen">
+        <param name="topic_pose" value="/filter"/>
+		<param name="topic_gps" value="/gps_filtered"/>
+        <param name="frame_id" value="/filter"/>
+		<param name="topic_yaw" value="/yaw_filtered"/>
+		<param name="origin_lat" value="31.027"/>
+		<param name="origin_lon" value="121.433"/>
+
+<!--		latitude: 31.0274549517-->
+<!--longitude: 121.433393138-->
+
+    </node>
+    <node pkg="fix2pose" type="pose2path" name="filter_path" ns="lty" output="screen">
+        <param name="pose_name" type="string" value="/filter"/>
+        <param name="path_name" type="string" value="/filter_path"/>
+        <param name="point_marker_type" type="int" value="7"/>
+        <param name="id" type="int" value="100"/>
+        <param name="color_r" type="double" value="0"/>
+        <param name="color_g" type="double" value="1"/>
+        <param name="color_b" type="double" value="0"/>
+    </node>
+
+</launch>

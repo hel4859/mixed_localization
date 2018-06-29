@@ -1,0 +1,8 @@
+prefix=/home/hl/catkin_ws/src/cmake-build-debug/devel
+
+Name: grid_localization_gl8
+Description: Description of grid_localization_gl8
+Version: 0.0.1
+Cflags: -I/home/hl/catkin_ws/src/cmake-build-debug/devel/include
+Libs: -L/home/hl/catkin_ws/src/cmake-build-debug/devel/lib 
+Requires: 

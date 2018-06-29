@@ -1,0 +1,10 @@
+<!-- -->
+<launch>
+  	<node pkg="fix2pose" type="pose2path" name="truth_path" output="screen">
+<!--		<param name="pose_type" value="truth_pose"/>-->
+<!--		<param name="path_type" value="truth_path"/>-->
+
+
+    </node>
+
+</launch>

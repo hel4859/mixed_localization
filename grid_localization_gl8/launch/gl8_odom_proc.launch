@@ -1,0 +1,7 @@
+<!-- grid_localization offline launch file, localization  -->
+<launch>
+
+	<node  pkg="grid_localization_gl8" type="loam_odom_proc" name="loam_odom_proc" output="screen">
+	</node>
+
+</launch>

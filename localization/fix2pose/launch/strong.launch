@@ -1,0 +1,32 @@
+<!-- -->
+<launch>
+    <node pkg="fix2pose" type="fix2tfpose" name="strong_pose" output="screen">
+        <param name="topic_pose" value="/strong"/>
+		<param name="topic_gps" value="/strong/fix"/>
+        <param name="frame_id" value="/strong"/>
+        <param name="topic_yaw_gps" value="/strong/raw_data"/>
+		<param name="topic_yaw" value="/strong/heading"/>
+		<param name="origin_lat" value="31.027"/>
+		<param name="origin_lon" value="121.433"/>
+    </node>
+    
+    <node pkg="fix2pose" type="pose2path" name="strong_path" ns="lty" output="screen">
+        <param name="pose_name" type="string" value="/strong"/>
+        <param name="path_name" type="string" value="/strong_path"/>
+        <param name="gps_name" type="string" value="/strong/fix"/>
+        <param name="gps_raw_name" type="string" value="/strong/raw_data"/>
+        <param name="point_marker_type" type="int" value="6"/>
+        <param name="id" type="int" value="100"/>
+        <param name="display_type" type="int" value="2"/>
+    </node>
+    <node pkg="fix2pose" type="pose2path" name="strong_markers" output="screen">
+        <param name="pose_name" type="string" value="/strong"/>
+        <param name="path_name" type="string" value="/strong_markers"/>
+        <param name="gps_name" type="string" value="/strong/fix"/>
+        <param name="gps_raw_name" type="string" value="/strong/raw_data"/>
+        <param name="point_marker_type" type="int" value="6"/>
+        <param name="id" type="int" value="101"/>
+        <param name="display_type" type="int" value="0"/>
+    </node>
+
+</launch>

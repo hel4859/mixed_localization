@@ -1,0 +1,1 @@
+set(ORDERED_PATHS "/home/hl/helei_ws/devel/lib;/opt/ros/indigo/lib")

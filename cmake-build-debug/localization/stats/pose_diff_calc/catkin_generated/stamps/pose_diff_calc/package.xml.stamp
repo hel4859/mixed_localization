@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>pose_diff_calc</name>
+  <version>0.0.1</version>
+  <description>
+    In this package, we calculate the position difference between two gps,
+    and the angle difference between two yaw.
+      1.global_parameter.h contains global parameters.
+      2.map_frame.h is used to transform latitude/longitude information
+         into 2D coordinate system.
+      3.position_diff.h/cpp calculates position difference.
+      4.angle_diff.h/cpp calculates angle difference.
+    Welcome to use the pose_diff_calc module.
+    For more information, feel free to contact the maintainer or author.
+  </description>
+  <maintainer email="lty@sjtu.org">lty</maintainer>
+  <license>Cyberc3 (SJTU)</license>
+  <!-- <url type="website">http://wiki.ros.org/ltypositioning</url> -->
+  <author email="lty@sjtu.org">lty</author>
+
+  <!-- The *_depend tags are used to specify dependencies -->
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>cmake_modules</depend>
+  <depend>tf</depend>
+  <depend>nav_msgs</depend>
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>gl8_msgs</depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  roslint_cpp()
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

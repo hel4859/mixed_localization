@@ -1,0 +1,16 @@
+<!-- -->
+<launch>
+    <node pkg="fix2pose" type="fix2tfpose" name="sn_pose" output="screen">
+        <param name="topic_pose" value="/sn"/>
+		<param name="topic_gps" value="/sn/fix"/>
+        <param name="frame_id" value="/sn"/>
+		<param name="topic_yaw" value="/sn/heading"/>
+		<param name="origin_lat" value="31.027"/>
+		<param name="origin_lon" value="121.433"/>
+
+<!--		latitude: 31.0274549517-->
+<!--longitude: 121.433393138-->
+
+    </node>
+
+</launch>

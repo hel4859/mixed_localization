@@ -1,0 +1,88 @@
+[BasicSettings]
+SHOW_WINDOW3D = 1
+SHOW_MINIWINDOW = 1
+SHOW_CURRENTLASERPOINTS = 0
+SHOW_POINTCLOUD = 0
+SHOW_POINTCLOUDCOLORED = 1	//color point cloud, current measurement
+SHOW_GLOBALPOINTCLOUD = 0   //global point cloud
+SHOW_CURRENTLASERPOINTS = 0 //single layer laser scanner
+SHOW_GRIDMAPLOCAL = 1       //grid map
+SHOW_GRIDBOXS = 0
+SHOW_ROBOT =0
+SHOW_ROBOTPOSE = 1          //localization pose
+SHOW_ROBOTPATH = 1 //1      //path of localization result
+SHOW_ROBOTMODEL = 0
+SHOW_GPSEKFPOSE = 0 	    //gps pose, ground truth when use rtk
+SAVE_RESULTANDLOG = 1 	    //save result log
+SAVE_POINTCLOUD = 0//0 	    // ((SAVE_POINTCLOUD && LOAD_POINTCLOUD)  ==0)
+LOAD_POINTCLOUD = 0//1 	    // ((SAVE_POINTCLOUD && LOAD_POINTCLOUD)  ==0)
+NAME_MAPFILE_IMG =
+USE_GPSFORMAPPING = 0//0    //用GPS数据生成栅格地图，配合Load_pointcloud和generate_gridmapFile使用
+USE_GLOBALPOINTCLOUDFORMATCHING = 0 //用 占据栅格地图 或 全局点云地图 作为参考地图进行匹配定位
+GENERATE_GRIDMAP = 1	    //在没有找到地图文件的情况下，若该量为1，则生成局部栅格图（利用载入的全局点云）
+GENERATE_GRIDMAPFILE = 1    //在生成局部参考栅格图的基础上，将局部参考栅格图存为文件
+CAMERA_FOLLOW_ROBOT = 1
+OUTPUT_FILTERED_POSE = 1
+
+output_pose_shift_x = 0
+output_pose_shift_y = 0
+
+whichGpsForInitial = 0      //not used
+timeForGps = 0             //s, time for gps
+gpsInitialStableCounter = 2 //   单位秒 进行定位时，在程序运行该值秒后，认为gps已经收敛，根据此gps位置进行定位操作
+
+minDisBetweenLaserPoints = 0.05
+pointsMap_heightMin = 0.2// 0.1//-0.3//-0.5
+pointsMap_heightMax =10
+pointsMap_clipOutOfRange = 30
+pointsMap_clipCenterDistance = 10
+
+gridMap_resolution = 0.1
+gridMap_halfSize = 60
+gridMap_enhanceStep = 0.02//0.005//0.01//0.02（校园）
+gridMap_pzFactor = 0.2//0.13//0.5//10（校园）//0.1
+gridMap_cellPointsThreshold = 5//10(紫竹)//15(校园环境)//
+
+pose_front_VLP16_x = 2.05///2.1000//(gl8)2.122
+pose_front_VLP16_y =0.0//0.0//(gl8)-0.015
+pose_front_VLP16_z = 1.225//1.72//(gl8)1.74//2.1
+pose_front_VLP16_yaw =-0.0100//0.0275//(gl8)0.05//1325
+pose_front_VLP16_pitch =0.1655//0.1675 //(gl8)0.222 //0.503598767//(0908配置)    //0.463598767//0920配置
+pose_front_VLP16_roll =0//0 //(gl8)0//     0.017//（0908配置）   0.01//0920配置
+
+pose_rear_VLP16_x = -0.45
+pose_rear_VLP16_y = -0.07
+pose_rear_VLP16_z = 2.1
+pose_rear_VLP16_yaw = 3.1415926
+pose_rear_VLP16_pitch = 0.27815926
+pose_rear_VLP16_roll = 0.00
+
+poseErrorMax = 5//5     //max distance for re-initialize localization, between GT and localization result
+icp_goodness_threshold = 0.2//0.1
+
+[ICP]
+maxIterations    = 4//2     // The maximum number of iterations to execute if convergence is not achieved before
+minAbsStep_trans = 1e-6//   // If the correction in all translation coordinates (X,Y,Z) is below this threshold (in meters), iterations are terminated:
+minAbsStep_rot   = 1e-6//   // If the correction in all rotation coordinates (yaw,pitch,roll) is below this threshold (in radians), iterations are terminated:
+
+thresholdDist    = 5.0//1    // Initial maximum distance for matching a pair of points
+thresholdAng_DEG = 5//10   // An angular factor (in degrees) to increase the matching distance for distant points.
+
+ALFA             = 0.9//0.9 // After convergence, the thresholds are multiplied by this constant and ICP keep running (provides finer matching)
+
+smallestThresholdDist=0.06  //0.06 // This is the smallest the distance threshold can become after stopping ICP and accepting the result.
+onlyClosestCorrespondences=1  //default is true. 1: Use the closest points only, 0:BAD, Use all the correspondences within the threshold (more robust sometimes, but slower)
+onlyUniqueRobust = 0 //Apart of "onlyClosestCorrespondences=true", if this option is enabled only the closest correspondence for each reference point will be kept(default=false).
+
+// 0: icpClassic
+// 1: icpLevenbergMarquardt
+ICP_algorithm = 0 //0
+
+// decimation to apply to the point cloud being registered against the map
+// Reduce to "1" to obtain the best accuracy
+corresponding_points_decimation = 100//100
+
+// Perform a RANSAC step, mrpt::tfest::se2_l2_robust(), after the ICP convergence, to obtain a better estimation of the pose PDF.
+doRANSAC = 0
+
+

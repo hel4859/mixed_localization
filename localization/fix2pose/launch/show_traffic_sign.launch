@@ -1,0 +1,57 @@
+<!-- -->
+<launch>
+    <node pkg="fix2pose" type="point2tfpose" name="sign1" output="screen">
+        <param name="lat" type="double" value="31.0156445841"/>
+        <param name="lon" type="double" value="121.451209047"/>
+        <param name="height" type="double" value="0.0"/>
+        <param name="yaw" type="double" value="-0.81"/>
+        <param name="frame_id" type="string" value="/sign1"/>
+        <param name="topic_name" type="string" value="/sign1"/>
+        <param name="topic_gps" type="string" value="/rtk/fix"/>
+    </node>
+    <node pkg="fix2pose" type="point2tfpose" name="sign2" output="screen">
+        <param name="lat" type="double" value="31.0154174349"/>
+        <param name="lon" type="double" value="121.454258016"/>
+        <param name="height" type="double" value="0.0"/>
+        <param name="yaw" type="double" value="0.25"/>
+        <param name="frame_id" type="string" value="/sign2"/>
+        <param name="topic_name" type="string" value="/sign2"/>
+        <param name="topic_gps" type="string" value="/rtk/fix"/>
+    </node>
+    <node pkg="fix2pose" type="point2tfpose" name="sign3" output="screen">
+        <param name="lat" type="double" value="31.0160396446"/>
+        <param name="lon" type="double" value="121.457037995"/>
+        <param name="height" type="double" value="0.0"/>
+        <param name="yaw" type="double" value="0.26"/>
+        <param name="frame_id" type="string" value="/sign3"/>
+        <param name="topic_name" type="string" value="/sign3"/>
+        <param name="topic_gps" type="string" value="/rtk/fix"/>
+    </node>
+    <node pkg="fix2pose" type="point2tfpose" name="sign4" output="screen">
+        <param name="lat" type="double" value="31.0173168007"/>
+        <param name="lon" type="double" value="121.460523321"/>
+        <param name="height" type="double" value="0.0"/>
+        <param name="yaw" type="double" value="0.6"/>
+        <param name="frame_id" type="string" value="/sign4"/>
+        <param name="topic_name" type="string" value="/sign4"/>
+        <param name="topic_gps" type="string" value="/rtk/fix"/>
+    </node>
+    <node pkg="fix2pose" type="point2tfpose" name="sign5" output="screen">
+        <param name="lat" type="double" value="31.0191592937"/>
+        <param name="lon" type="double" value="121.455953882"/>
+        <param name="height" type="double" value="0.0"/>
+        <param name="yaw" type="double" value="-2.83"/>
+        <param name="frame_id" type="string" value="/sign5"/>
+        <param name="topic_name" type="string" value="/sign5"/>
+        <param name="topic_gps" type="string" value="/rtk/fix"/>
+    </node>
+    <node pkg="fix2pose" type="point2tfpose" name="sign6" output="screen">
+        <param name="lat" type="double" value="31.0180346837"/>
+        <param name="lon" type="double" value="121.451257439"/>
+        <param name="height" type="double" value="0.0"/>
+        <param name="yaw" type="double" value="-2.93"/>
+        <param name="frame_id" type="string" value="/sign6"/>
+        <param name="topic_name" type="string" value="/sign6"/>
+        <param name="topic_gps" type="string" value="/rtk/fix"/>
+    </node>
+</launch>

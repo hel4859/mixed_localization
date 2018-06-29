@@ -1,0 +1,33 @@
+<!-- -->
+<launch>
+    <node pkg="fix2pose" type="fix2tfpose" name="filter_pose" ns="/filter" output="screen">
+        <param name="topic_pose" value="/filter"/>
+		<param name="topic_gps" value="/gps_filtered"/>
+        <param name="frame_id" value="/filter"/>
+        <param name="topic_yaw_gps" value="/sn/raw_data"/>
+		<param name="topic_yaw" value="/yaw_filtered"/>
+		<param name="origin_lat" value="31.027"/>
+		<param name="origin_lon" value="121.433"/>
+    </node>
+    
+    <node pkg="fix2pose" type="pose2path" name="filter_path" output="screen">
+        <param name="pose_name" type="string" value="/filter"/>
+        <param name="path_name" type="string" value="/filter_path"/>
+        <param name="gps_name" type="string" value="/gps_filtered"/>
+        <param name="gps_raw_name" type="string" value="/sn/raw_data"/>
+        <param name="point_marker_type" type="int" value="6"/>
+        <param name="id" type="int" value="100"/>
+        <param name="display_type" type="int" value="2"/>
+    </node>
+    <node pkg="fix2pose" type="pose2path" name="filter_markers" output="screen">
+        <param name="pose_name" type="string" value="/filter"/>
+        <param name="path_name" type="string" value="/filter_markers"/>
+        <param name="gps_name" type="string" value="/gps_filtered"/>
+        <param name="gps_raw_name" type="string" value="/sn/raw_data"/>
+        <param name="point_marker_type" type="int" value="7"/>
+        <param name="marker_size" type="double" value="0.02"/>
+        <param name="id" type="int" value="101"/>
+        <param name="display_type" type="int" value="0"/>
+    </node>
+
+</launch>

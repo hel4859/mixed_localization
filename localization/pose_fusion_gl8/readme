@@ -1,0 +1,6 @@
+强制下拉方法
+git fetch origin
+git reset --hard origin/master
+
+强制上传方法
+git push --force cybertiggo master

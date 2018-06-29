@@ -1,0 +1,24 @@
+<package format="2">
+  <name>gps_localization_ros</name>
+  <version>0.0.1</version>
+  <description>
+    navigation_task_ros
+  </description>
+  <author>wenglihong</author>
+  <maintainer email="wengge987@163.com">wenglihong</maintainer>
+  <license>BSD</license>
+  <url></url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+
+  <depend>sensor_msgs</depend>
+  <depend>tf</depend>
+  <depend>gl8_utils</depend>
+
+</package>

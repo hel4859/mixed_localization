@@ -1,0 +1,8 @@
+prefix=/home/hl/catkin_ws/src/cmake-build-debug/devel
+
+Name: fix2pose
+Description: Description of fix2pose
+Version: 0.0.1
+Cflags: 
+Libs: -L/home/hl/catkin_ws/src/cmake-build-debug/devel/lib 
+Requires: roscpp std_msgs tf sensor_msgs visualization_msgs gl8_msgs gl8_utils

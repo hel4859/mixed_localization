@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: grid_localization_gl8
+Description: Description of grid_localization_gl8
+Version: 0.0.1
+Cflags: -I/usr/local/include
+Libs: -L/usr/local/lib 
+Requires: 

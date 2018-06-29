@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: kalman_filter
+Description: Description of kalman_filter
+Version: 0.0.1
+Cflags: -I/usr/local/include
+Libs: -L/usr/local/lib -lkalman_filter
+Requires: 

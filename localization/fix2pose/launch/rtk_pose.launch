@@ -1,0 +1,16 @@
+<!-- -->
+<launch>
+    <node pkg="fix2pose" type="fix2tfpose" name="rtk_pose" output="screen">
+        <param name="topic_pose" value="/rtk"/>
+		<param name="topic_gps" value="/rtk/fix"/>
+        <param name="frame_id" value="/rtk"/>
+		<param name="topic_yaw" value="/rtk/yaw_filtered"/>
+		<param name="origin_lat" value="31.027"/>
+		<param name="origin_lon" value="121.433"/>
+
+<!--		latitude: 31.0274549517-->
+<!--longitude: 121.433393138-->
+
+    </node>
+
+</launch>

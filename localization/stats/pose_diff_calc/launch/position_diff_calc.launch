@@ -1,0 +1,12 @@
+<!-- Starts position_diff_calc node with param -->
+<launch>
+    <node pkg="pose_diff_calc" type="position_diff_calc" name="position_diff_calc" output="screen">
+      <!-- topic name setup -->
+      <param name="gps_topic_1" type="string" value="/gps_filtered"/>
+      <param name="gps_topic_2" type="string" value="/rtk/fix"/>
+      <param name="position_diff_topic" type="string" value="/position_diff"/>
+      <param name="gps_frequency_1" type="double" value="10"/>
+      <param name="gps_frequency_2" type="double" value="10"/>
+      <param name="position_diff_output_frequency" type="double" value="10"/>
+    </node>
+</launch>

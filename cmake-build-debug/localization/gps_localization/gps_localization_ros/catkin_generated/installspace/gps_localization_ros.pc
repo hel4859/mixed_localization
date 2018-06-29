@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: gps_localization_ros
+Description: Description of gps_localization_ros
+Version: 0.0.1
+Cflags: 
+Libs: -L/usr/local/lib 
+Requires: message_runtime roscpp std_msgs sensor_msgs tf gl8_utils

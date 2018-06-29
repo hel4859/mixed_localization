@@ -1,0 +1,12 @@
+<!-- -->
+<launch>
+    <node pkg="feature_detection_pkg" type="points_to_stixel" name="pole_detection" output="screen">
+    </node>
+
+    <node pkg="pole_localization" type="update_map_node" name="update_pole" output="screen">
+    </node>
+    
+    <node pkg="pole_localization" type="pf_localization" name="pole_localization" output="screen">
+    </node>
+  
+</launch>
