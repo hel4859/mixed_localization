@@ -77,56 +77,6 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="visualization_msgs_generate_messages_cpp">
-				<Option working_dir="/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 visualization_msgs_generate_messages_cpp"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="visualization_msgs_generate_messages_lisp">
-				<Option working_dir="/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 visualization_msgs_generate_messages_lisp"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="visualization_msgs_generate_messages_py">
-				<Option working_dir="/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 visualization_msgs_generate_messages_py"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="gl8_msgs_generate_messages_cpp">
-				<Option working_dir="/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 gl8_msgs_generate_messages_cpp"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="gl8_msgs_generate_messages_py">
-				<Option working_dir="/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 gl8_msgs_generate_messages_py"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="n280conv">
 				<Option output="/home/hl/catkin_ws/src/cmake-build-debug/devel/lib/fix2pose/n280conv" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/hl/catkin_ws/src/cmake-build-debug/devel/lib/fix2pose"/>
@@ -182,6 +132,66 @@
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 n280conv/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="visualization_msgs_generate_messages_cpp">
+				<Option working_dir="/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 visualization_msgs_generate_messages_cpp"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="visualization_msgs_generate_messages_lisp">
+				<Option working_dir="/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 visualization_msgs_generate_messages_lisp"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="visualization_msgs_generate_messages_py">
+				<Option working_dir="/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 visualization_msgs_generate_messages_py"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gl8_msgs_generate_messages_cpp">
+				<Option working_dir="/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 gl8_msgs_generate_messages_cpp"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gl8_msgs_generate_messages_eus">
+				<Option working_dir="/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 gl8_msgs_generate_messages_eus"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gl8_msgs_generate_messages_py">
+				<Option working_dir="/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 gl8_msgs_generate_messages_py"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hl/catkin_ws/src/cmake-build-debug/localization/fix2pose/Makefile&quot;  VERBOSE=1 clean"/>

@@ -19,7 +19,6 @@
 #include "ekf_pose.h"
 #include "utils.h"
 
-
 using namespace std;
 sensor_msgs::NavSatFix sensor_gps;
 gl8_msgs::GPTRA_MSG gps_attitude;
@@ -63,11 +62,11 @@ int main(int argc, char **argv){
     nh_priv.param<double>("encoder_input_frequency",encoder_input_frequency,100);
     nh_priv.param<double>("imu_input_frequency",imu_input_frequency,100);
     nh_priv.param<double>("imu_angular_velocity_error",IMU_W_ERR,0.0015);
-    nh_priv.param<double>("GPS_error_fix",MAPFRAME_OBS_ERR_FIX,0.08);
+    nh_priv.param<double>("GPS_error_fix",MAPFRAME_OBS_ERR_FIX,0.008);
     nh_priv.param<double>("GPS_error_float",MAPFRAME_OBS_ERR_FLOAT,1.0);
     nh_priv.param<double>("GPS_error_single",MAPFRAME_OBS_ERR_SINGLE,3.0);
     nh_priv.param<double>("encoder_error",REAR_WHEEL_ENCODER_ERR,0.03);
-    nh_priv.param<double>("GPS_yaw_estimation_error",OBS_YAW_ERR_FIX,10 * M_PI / 180.0);
+    nh_priv.param<double>("GPS_yaw_estimation_error",OBS_YAW_ERR_FIX,0.2 * M_PI / 180.0);
 
     pub_gps = nh.advertise<sensor_msgs::NavSatFix>(gps_output_topic,10);
     pub_yaw = nh.advertise<gl8_msgs::Heading>(yaw_output_topic,10);
@@ -102,12 +101,11 @@ void state_callback(const gl8_msgs::VehicleIMUConstPtr &imu_in, const gl8_msgs::
     }
     have_inited_can = true;
     t_can = get_time_now();
-    curr_yaw_rate = ( imu_in->yaw_z+0.001043683)/1.00633477+0.0082;
-   // curr_yaw_rate = imu_in->angular_velocity.z;
+    curr_yaw_rate = imu_in->yaw_z;
     curr_vel = vel_in->rear_wheel_speed;
 }
 
-double obs_yaw = 0;
+
 void update_callback(const sensor_msgs::NavSatFixConstPtr &gps_in, const gl8_msgs::GPTRA_MSGConstPtr &attitude_in, const gl8_msgs::GPGGA_MSGConstPtr &raw_in){
     if (!have_inited_gps){
         have_inited_gps = true;
@@ -138,15 +136,7 @@ void update_callback(const sensor_msgs::NavSatFixConstPtr &gps_in, const gl8_msg
 
     MapFrame obs_pos;
     obs_pos.GPS2MapFrame(*gps_in);
-    //double obs_yaw = attitude_in->heading;
-    if(attitude_in->heading < 10 && attitude_in->heading > -10) 
-    {
-	obs_yaw = attitude_in->heading;
-	OBS_YAW_ERR = OBS_YAW_ERR_FIX;
-    }
-    else OBS_YAW_ERR = M_PI;
-    if(obs_yaw >= M_PI) obs_yaw -= 2*M_PI;
-    if(obs_yaw < -M_PI) obs_yaw += 2*M_PI;
+    double obs_yaw = attitude_in->heading;
 
     if (!have_inited){
         have_inited = true;
@@ -223,8 +213,8 @@ void filter_callback(const ros::TimerEvent&){
     pub_gps.publish(out_gps);
     pub_yaw.publish(output_yaw);
     MapFrame raw_pos;
-    //double obs_yaw;
-    //obs_yaw = gps_attitude.heading;
+    double obs_yaw;
+    obs_yaw = gps_attitude.heading;
     raw_pos.GPS2MapFrame(obs_gps);
     double distance_diff = raw_pos.calcDistance(output_pos);
     double yaw_diff_rad = obs_yaw - output_yaw_data;

@@ -39,12 +39,12 @@ gridMap_enhanceStep = 0.007//0.01//0.02（校园）
 gridMap_pzFactor = 0.13//0.5//10（校园）//0.1
 gridMap_cellPointsThreshold = 10//10(紫竹)//15(校园环境)//
 
-pose_front_VLP16_x = 2.1000//(gl8)2.122
-pose_front_VLP16_y =0.0//(gl8)-0.015
-pose_front_VLP16_z = 1.72//(gl8)1.74//2.1
-pose_front_VLP16_yaw =0.0275//(gl8)0.05//1325
-pose_front_VLP16_pitch =0.1675 //(gl8)0.222 //0.503598767//(0908配置)    //0.463598767//0920配置
-pose_front_VLP16_roll =0 //(gl8)0//     0.017//（0908配置）   0.01//0920配置
+pose_front_VLP16_x = 2.122///2.1000//(gl8)2.122
+pose_front_VLP16_y =-0.015//0.0//(gl8)-0.015
+pose_front_VLP16_z = 1.74//1.72//(gl8)1.74//2.1
+pose_front_VLP16_yaw =0.144//0.0275//(gl8)0.05//1325
+pose_front_VLP16_pitch =0.222//0.1675 //(gl8)0.222 //0.503598767//(0908配置)    //0.463598767//0920配置
+pose_front_VLP16_roll =0.0//0 //(gl8)0//     0.017//（0908配置）   0.01//0920配置
 
 pose_rear_VLP16_x = -0.4
 pose_rear_VLP16_y = -0.07

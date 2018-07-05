@@ -2,14 +2,14 @@
 <launch>
 
 	<node  pkg="grid_localization_gl8" type="grid_localization_gl8" name="grid_localization_gl8" output="screen">
-		<param name="excute_mode" type="int" value="0" />
+		<param name="excute_mode" type="int" value="2" />
 		<!-- excute_mode selection:
 			0:get global point cloud map，
 			1:generate grid map from global point cloud map，
 			2:localization against reference map(gridmap/pointcloudmap)-->
-		<param name="pointcloud_file" type="string" value="/home/hl/fanyaditu/12.ply" />
+		<param name="pointcloud_file" type="string" value="/home/hl/mapdata/xingzhenglou/xingzhenglou.ply" />
 		<param name="pointcloud_save" type="string" value="/home/hl/catkin_ws/src/grid_localization_gl8/pointcloud/" />
-		<param name="gridmap_path" type="string" value="../map/fanyaold0606" />
+		<param name="gridmap_path" type="string" value="/home/hl/catkin_ws/src/grid_localization_gl8/map/xingzhenglou/" />
 		<param name="log_file_path" type="string" value="/home/hl/catkin_ws/src/grid_localization_gl8/save_log" />
 		<param name="config_file_path" type="string" value="/home/hl/catkin_ws/src/grid_localization_gl8/config" />
 	</node>

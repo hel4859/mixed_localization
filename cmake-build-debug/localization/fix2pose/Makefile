@@ -90,6 +90,18 @@ test/fast: test
 
 .PHONY : test/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/home/hl/下载/clion-2017.2.2/bin/cmake/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/home/hl/下载/clion-2017.2.2/bin/cmake/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -122,18 +134,6 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/home/hl/下载/clion-2017.2.2/bin/cmake/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/home/hl/下载/clion-2017.2.2/bin/cmake/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -181,6 +181,21 @@ pose2path: localization/fix2pose/CMakeFiles/pose2path.dir/rule
 pose2path/fast:
 	cd /home/hl/catkin_ws/src/cmake-build-debug && $(MAKE) -f localization/fix2pose/CMakeFiles/pose2path.dir/build.make localization/fix2pose/CMakeFiles/pose2path.dir/build
 .PHONY : pose2path/fast
+
+# Convenience name for target.
+localization/fix2pose/CMakeFiles/n280conv.dir/rule:
+	cd /home/hl/catkin_ws/src/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 localization/fix2pose/CMakeFiles/n280conv.dir/rule
+.PHONY : localization/fix2pose/CMakeFiles/n280conv.dir/rule
+
+# Convenience name for target.
+n280conv: localization/fix2pose/CMakeFiles/n280conv.dir/rule
+
+.PHONY : n280conv
+
+# fast build rule for target.
+n280conv/fast:
+	cd /home/hl/catkin_ws/src/cmake-build-debug && $(MAKE) -f localization/fix2pose/CMakeFiles/n280conv.dir/build.make localization/fix2pose/CMakeFiles/n280conv.dir/build
+.PHONY : n280conv/fast
 
 # Convenience name for target.
 localization/fix2pose/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/rule:
@@ -243,6 +258,21 @@ gl8_msgs_generate_messages_cpp/fast:
 .PHONY : gl8_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
+localization/fix2pose/CMakeFiles/gl8_msgs_generate_messages_eus.dir/rule:
+	cd /home/hl/catkin_ws/src/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 localization/fix2pose/CMakeFiles/gl8_msgs_generate_messages_eus.dir/rule
+.PHONY : localization/fix2pose/CMakeFiles/gl8_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+gl8_msgs_generate_messages_eus: localization/fix2pose/CMakeFiles/gl8_msgs_generate_messages_eus.dir/rule
+
+.PHONY : gl8_msgs_generate_messages_eus
+
+# fast build rule for target.
+gl8_msgs_generate_messages_eus/fast:
+	cd /home/hl/catkin_ws/src/cmake-build-debug && $(MAKE) -f localization/fix2pose/CMakeFiles/gl8_msgs_generate_messages_eus.dir/build.make localization/fix2pose/CMakeFiles/gl8_msgs_generate_messages_eus.dir/build
+.PHONY : gl8_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
 localization/fix2pose/CMakeFiles/gl8_msgs_generate_messages_py.dir/rule:
 	cd /home/hl/catkin_ws/src/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 localization/fix2pose/CMakeFiles/gl8_msgs_generate_messages_py.dir/rule
 .PHONY : localization/fix2pose/CMakeFiles/gl8_msgs_generate_messages_py.dir/rule
@@ -256,21 +286,6 @@ gl8_msgs_generate_messages_py: localization/fix2pose/CMakeFiles/gl8_msgs_generat
 gl8_msgs_generate_messages_py/fast:
 	cd /home/hl/catkin_ws/src/cmake-build-debug && $(MAKE) -f localization/fix2pose/CMakeFiles/gl8_msgs_generate_messages_py.dir/build.make localization/fix2pose/CMakeFiles/gl8_msgs_generate_messages_py.dir/build
 .PHONY : gl8_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-localization/fix2pose/CMakeFiles/n280conv.dir/rule:
-	cd /home/hl/catkin_ws/src/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 localization/fix2pose/CMakeFiles/n280conv.dir/rule
-.PHONY : localization/fix2pose/CMakeFiles/n280conv.dir/rule
-
-# Convenience name for target.
-n280conv: localization/fix2pose/CMakeFiles/n280conv.dir/rule
-
-.PHONY : n280conv
-
-# fast build rule for target.
-n280conv/fast:
-	cd /home/hl/catkin_ws/src/cmake-build-debug && $(MAKE) -f localization/fix2pose/CMakeFiles/n280conv.dir/build.make localization/fix2pose/CMakeFiles/n280conv.dir/build
-.PHONY : n280conv/fast
 
 # Convenience name for target.
 localization/fix2pose/CMakeFiles/pose2path2.dir/rule:
@@ -585,6 +600,8 @@ help:
 	@echo "... edit_cache"
 	@echo "... test"
 	@echo "... pose2path"
+	@echo "... install"
+	@echo "... n280conv"
 	@echo "... rebuild_cache"
 	@echo "... visualization_msgs_generate_messages_cpp"
 	@echo "... install/strip"
@@ -592,9 +609,8 @@ help:
 	@echo "... visualization_msgs_generate_messages_lisp"
 	@echo "... visualization_msgs_generate_messages_py"
 	@echo "... gl8_msgs_generate_messages_cpp"
+	@echo "... gl8_msgs_generate_messages_eus"
 	@echo "... gl8_msgs_generate_messages_py"
-	@echo "... install"
-	@echo "... n280conv"
 	@echo "... pose2path2"
 	@echo "... gl8_msgs_generate_messages_lisp"
 	@echo "... fix2tfpose"

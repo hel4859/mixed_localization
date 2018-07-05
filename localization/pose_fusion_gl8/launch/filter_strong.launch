@@ -24,7 +24,7 @@
       <param name="GPS_error_single" type="double" value="3.0"/>
       <param name="imu_angular_velocity_error" type="double" value="0.0015"/>
       <param name="encoder_error" type="double" value="0.03"/>
-      <param name="GPS_yaw_estimation_error" type="double" value="0.174"/>
+      <param name="GPS_yaw_estimation_error" type="double" value="0.0035"/>
       <!--0.l0035-->
     </node>
 </launch>

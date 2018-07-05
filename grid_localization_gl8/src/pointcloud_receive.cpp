@@ -152,7 +152,8 @@ void pointcloud_receive::pointcloud_callback(const sensor_msgs::PointCloud2& msg
             }
 
             poseEst2D_last = poseEst2D;
-            poseEkf2D_last = poseEkf2D;
+            poseEkf2D_last = CPose2D(gps_x,gps_y,gps_rz);
+          //  poseEkf2D_last = poseEkf2D;
 
             if(SAVE_POINTCLOUD) poseEst2D_last = poseEkf2D;
         }
@@ -176,7 +177,8 @@ void pointcloud_receive::pointcloud_callback(const sensor_msgs::PointCloud2& msg
             DR.glResult_EKF.init(3,X0_init,P0_init);//NaN
             ROS_INFO("*** poseEst2D NaN ***");
         }
-        poseEst2D = poseEkf2D;
+       // poseEst2D = poseEkf2D;
+        poseEst2D =  CPose2D(gps_x,gps_y,gps_rz);
        // poseEst2D = poseDR2D;//$$$$$$$$$$$$$$$$$
 
         //for matching using history pointclouds
@@ -195,7 +197,8 @@ void pointcloud_receive::pointcloud_callback(const sensor_msgs::PointCloud2& msg
         }
 
         poseEst2D_last = poseEst2D;
-        poseEkf2D_last = poseEkf2D;  
+      //  poseEkf2D_last = poseEkf2D;
+        poseEkf2D_last = CPose2D(gps_x,gps_y,gps_rz);
     }
 
 
@@ -235,7 +238,8 @@ void pointcloud_receive::pointcloud_callback(const sensor_msgs::PointCloud2& msg
     }
 
     /*-----------------------Load/generate/save grid map file----------------------------*/
-    if(isGlobalGridMapCenterChange(poseEst2D.x(), poseEst2D.y(), curGridMapCenter.x(), curGridMapCenter.y()))
+  //  if(isGlobalGridMapCenterChange(poseEst2D.x(), poseEst2D.y(), curGridMapCenter.x(), curGridMapCenter.y()))
+    if(isGlobalGridMapCenterChange(gps_x,gps_y, curGridMapCenter.x(), curGridMapCenter.y()))
     {
         char tempFileName[100];
         std::string gridmap_file_path = gridmap_path;
@@ -275,7 +279,8 @@ void pointcloud_receive::pointcloud_callback(const sensor_msgs::PointCloud2& msg
             if(!((xmax>xmin)&&(ymax>ymin)))
             {
                 ROS_INFO("setSize error, xmax %f, xmin %f, ymax %f, ymin %f, posex %f, posey %f",
-                         xmax,xmin,ymax,ymin,poseEst2D.x(),poseEst2D.y());
+                         xmax,xmin,ymax,ymin,gps_x,gps_y);
+                        // xmax,xmin,ymax,ymin,poseEst2D.x(),poseEst2D.y());
             }
             else{
                 localGridMap.setSize(xmin,xmax,ymin,ymax, gridMap_resolution,1);
@@ -347,15 +352,21 @@ void pointcloud_receive::pointcloud_callback(const sensor_msgs::PointCloud2& msg
         //use gps for initialGuess
         if(DR.notDoingIcpYet)
         {
-            initialGuess = poseEkf2D;
+          // initialGuess = poseEkf2D;
+            initialGuess =CPose2D(gps_x,gps_y,gps_rz);
             DR.notDoingIcpYet = false;
 
             //DR.glResult_EKF initialization
             Lu_Matrix X0 = Lu_Matrix(3,1);
             Lu_Matrix P0 = Lu_Matrix(3,3);
-            X0(0,0)=poseEkf2D.x();
-            X0(1,0)=poseEkf2D.y();
-            X0(2,0)=poseEkf2D.phi();
+//            X0(0,0)=poseEkf2D.x();
+//            X0(1,0)=poseEkf2D.y();
+//            X0(2,0)=poseEkf2D.phi();
+
+            X0(0,0) = gps_x;
+            X0(1,0) = gps_y;
+            X0(2,0) = gps_rz;
+
             if(X0(2,0)<0) X0(2,0) += 2*PI;
             P0(0,0)=1;
             P0(1,1)=1;
@@ -364,7 +375,8 @@ void pointcloud_receive::pointcloud_callback(const sensor_msgs::PointCloud2& msg
         }
         //use motion model(odo and imu) for initialGuess
         else{
-            initialGuess = poseEst2D_last + poseIncr2D;// + random to test matcher;
+           // initialGuess = poseEst2D_last + poseIncr2D;// + random to test matcher;
+            initialGuess =CPose2D(gps_x,gps_y,gps_rz);
         }
 
         pdfG = CPosePDFGaussian(initialGuess);//
@@ -383,6 +395,8 @@ void pointcloud_receive::pointcloud_callback(const sensor_msgs::PointCloud2& msg
             );
             icp_tic_time = icp_tic.Tac()*1000;   //timer end, unit s->ms
             poseEst2D = pdf->getMeanVal();
+
+           // std::cout<<"pose:"<<poseEkf2D.x()<<","<<poseEkf2D.y()<<","<<poseEkf2D.phi()<<std::endl;
             pdf->getCovarianceAndMean(covariance_matching, poseEst2D);
             hasCurRobotPoseEst = true;
         }
@@ -419,26 +433,32 @@ void pointcloud_receive::pointcloud_callback(const sensor_msgs::PointCloud2& msg
         GLOBV_RO*=GLOBV_RO;
 
         //if(DR.pulse_sum >0.3 )
-            DR.glResult_EKF.Obv_GPS_update(poseEst2D.x(),poseEst2D.y(),GLOBV_RO);
+        DR.glResult_EKF.Obv_GPS_update(poseEst2D.x(),poseEst2D.y(),GLOBV_RO);
         Lu_Matrix state = DR.glResult_EKF.getState();
 
         //output matching result or filtered result
         if(OUTPUT_FILTERED_POSE) poseEst2D = CPose2D(state(0,0),state(1,0),state(2,0));
     }
     //if excute_mode==0 || excute_mode==1, use gps ekf result instead of matching result
-    else if(SAVE_POINTCLOUD || USE_GPSFORMAPPING) poseEst2D = poseEkf2D;
+    //else if(SAVE_POINTCLOUD || USE_GPSFORMAPPING) poseEst2D = poseEkf2D;
+    else if(SAVE_POINTCLOUD || USE_GPSFORMAPPING) poseEst2D = CPose2D(gps_x,gps_y,gps_rz);
 
     CPoint2D pointTemp(poseEst2D.x(),poseEst2D.y());
-    poseEstDist2poseEKF = pointTemp.distance2DTo(poseEkf2D.x(),poseEkf2D.y());
+
+    poseEstDist2poseEKF = pointTemp.distance2DTo( gps_x,gps_y);
+    // poseEstDist2poseEKF = pointTemp.distance2DTo(poseEkf2D.x(),poseEkf2D.y());
 
     /*--------------------------------Save result log------------------------------------*/
     if(SAVE_RESULTANDLOG)
     {
         outputFile_result.printf("%.2f\t%.2f\t%.2f\t%.5f\t%.2f\t%.2f\t%.5f\t%.3f\t%.2f\n",
             DR.mileage_sum,
-            poseEkf2D.x()+output_pose_shift_x,
-            poseEkf2D.y()+output_pose_shift_y,
-            poseEkf2D.phi(),
+         //   poseEkf2D.x()+output_pose_shift_x,
+                gps_x+output_pose_shift_x,
+            //poseEkf2D.y()+output_pose_shift_y,
+                gps_y+output_pose_shift_y,
+          //  poseEkf2D.phi(),
+                gps_rz,
             poseEst2D.x()+output_pose_shift_x,
             poseEst2D.y()+output_pose_shift_y,
             poseEst2D.phi(),
@@ -529,8 +549,8 @@ void pointcloud_receive::pointcloud_callback(const sensor_msgs::PointCloud2& msg
         {
             CSetOfLinesPtr objPath = CSetOfLines::Create();
             objPath->appendLine(poseEkf2D_last.x(),poseEkf2D_last.y(),0,
-                                poseEkf2D.x(),poseEkf2D.y(),0);
-            poseEkf2D_last = poseEkf2D;
+                                gps_x,gps_y,0);
+            poseEkf2D_last = CPose2D(gps_x,gps_y,gps_rz) ;
             objPath->setLineWidth(2);
             objPath->setColor(0.5,0.9,0.5);
             objSetPath->insert(objPath);
